@@ -12,7 +12,7 @@ class Domain(models.Model):
     domain=models.CharField(max_length=10)
 
 class MyAccountManager(BaseUserManager):
-    def create_user(self, first_name, username,password=None):
+    def create_user(self,phone, first_name, username,password=None):
         if not username:
             raise ValueError('User must have an username')
 
@@ -20,6 +20,7 @@ class MyAccountManager(BaseUserManager):
         user = self.model(
             first_name=first_name,
             username=username,
+            phone=phone
    
         )
 
@@ -27,12 +28,12 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self,username, password,first_name):
+    def create_superuser(self,username, password,first_name,phone):
         user = self.create_user(
             first_name=first_name,
             username=username,
             password = password,
-
+            phone=phone
         )
         user.is_admin = True
         user.is_active = True
@@ -59,7 +60,7 @@ class User(AbstractBaseUser):
     bio=models.CharField(max_length=100,null=True)
     phone=models.CharField(max_length=10,null=True)
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name','phone']
     objects = MyAccountManager()
 
 class Manifest(models.Model):

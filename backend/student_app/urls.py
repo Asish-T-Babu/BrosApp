@@ -11,6 +11,6 @@ urlpatterns = [
     path('view_profile/<int:id>',view_profile, name='view_profile'),
     path('token', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-     path('otplogin',otplogin,name='otplogin'),
-    path('otp_verify',otp_verify,name='otp_verify'),
+    # path('otplogin',otplogin,name='otplogin'),
+    # path('otp_verify',otp_verify,name='otp_verify'),
 ]

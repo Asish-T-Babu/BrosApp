@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     user_manifest = ManifestSerializer(many=True)
     class Meta:
         model = User
-        fields = ['id','first_name','username','email','password','is_superuser','user_manifest','phone']
+        fields = ['id','first_name','username','phone','email','password','is_superuser','user_manifest']
         extra_kwargs = {'password': {'write_only': True}}
     def create(self, validated_data):
         password = validated_data.pop('password',None)
@@ -90,7 +90,7 @@ class AdminBatchSerializer(serializers.ModelSerializer):
 class ChatSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id','first_name','username','email','phone']
+        fields = ['id','first_name','username','email','phone','photo']
 
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
@@ -116,6 +116,21 @@ class ChatGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChatGroup
         fields = ['id', 'name', 'members','creator','about']
+
+
+
+
+# class ChatGrouppSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ChatGroup
+#         fields = ['id', 'name', 'members','creator','about']
+
+class ChatGrouppSerializer(serializers.ModelSerializer):
+    # member_names = serializers.StringRelatedField(many=True)
+
+    class Meta:
+        model = ChatGroup
+        fields = ['id', 'name', 'members', 'creator', 'about', 'photo']
 
 # class ChatGroupMemberSerializer(serializers.ModelSerializer):
 #     members = serializers.ManyRelatedField(GroupUserSerializer(many=True))

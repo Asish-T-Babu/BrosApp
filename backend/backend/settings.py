@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -152,6 +152,17 @@ DATABASES = {
 }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'brosapp',
+#         'USER': 'postgers',
+#         'PASSWORD': 'postgers',
+#         'HOST': 'brosapp-backend.cllhpdb9gea3.ap-south-1.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -209,3 +220,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER='asishtbabuf1@gmail.com'
 EMAIL_HOST_PASSWORD='nlegikkiigkdipej'
 EMAIL_USE_TLS=True
+
+twilio_key = os.getenv('twilio_key')

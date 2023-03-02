@@ -43,6 +43,19 @@ def view_chat(request,id):
         return Response(serialzer.data)
 
 @api_view(['GET'])
+def add_members_list(request,id):
+    group=ChatGroup.objects.get(id=id)
+    b=group.members.all()
+    c=[]
+    for i in b:
+        c.append(str(i))
+    print(c)
+    members = User.objects.exclude(username__in=c)
+    serializer=ChatSerializer(members,many=True)
+    return Response(serializer.data)
+    
+
+@api_view(['GET'])
 def create_or_find_room(request,id1,id2):
     id1=User.objects.get(id=id1)
     id2=User.objects.get(id=id2)
@@ -103,8 +116,10 @@ def view_group(request,id):
 @api_view(['PATCH'])
 def AddMembersToChatGroupView(request, id):
     group_chat = get_object_or_404(ChatGroup, id=id)
-    group_chat.members.set(request.data.get("members"))
-    group_chat.save()
+    new=request.data.get("members")
+    for i in new:
+        group_chat.members.add(i)
+        group_chat.save()
     return Response({"message": "Members added to group chat successfully."}, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
@@ -151,7 +166,6 @@ def add_week(request):
 def edit_week(request,id):
     if request.method == 'PUT':
         data=request.data.copy()
-        print(data['week'])
         try:
             a=int(data["techinical_score"])
         except:

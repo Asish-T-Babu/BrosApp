@@ -5,6 +5,7 @@ urlpatterns = [
     path('register_batch/',register_batch,name="register_batch"),
     path('register_domain/',register_domain,name="register_domain"),
     path('view_chat/<int:id>',view_chat,name='view_chat'),
+    path('add_members_list/<int:id>',add_members_list,name='add_members_list'),
     path('create_or_find_room/<int:id1>/<int:id2>',create_or_find_room,name='create_or_find_room'),
     path('view_all_messages/<int:id>',view_all_messages,name='view_all_messages'),
     path('create_group/',create_group,name="create_group"),
