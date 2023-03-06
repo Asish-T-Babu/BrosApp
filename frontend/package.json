@@ -25,6 +25,7 @@
     "react-hook-form": "^7.40.0",
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.5",
+    "react-scripts": "^5.0.1",
     "react-spreadsheet": "^0.7.7",
     "reactstrap": "^9.1.5",
     "scheduler": "^0.23.0",
