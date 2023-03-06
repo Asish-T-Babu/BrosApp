@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(vuq8#(ayt#gz7^6i5ohk(7n+0s@334#s@5t72609)q!%(2645
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.66.240.151','localhost','brosapp.xyz','www.brosapp.xyz','127.0.0.1']
 
 
 # Application definition
@@ -107,7 +107,8 @@ MIDDLEWARE = [
 CORS_ORGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
-  'http://localhost:3000',
+#   'http://localhost:3000',
+    'https://brosapp.netlify.app',
 )
 
 
@@ -141,11 +142,21 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'backend',
+#         'USER' : 'admin',
+#         'PASSWORD' : 'admin',
+#         'HOST' : 'localhost'
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'backend',
-        'USER' : 'admin',
+        'NAME': 'week20',
+        'USER' : 'postgres',
         'PASSWORD' : 'admin',
         'HOST' : 'localhost'
     }
